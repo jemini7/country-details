@@ -11,19 +11,20 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container p-3">
         <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <select id="cname" onchange="fetchdata()"></select>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <select class="form-control" id="cname" onchange="fetchdata()"></select>
                 <!-- <input type="text" placeholder="Search Country" id="cname">
                 <button onclick="fetchdata()">Fetch Country</button> -->
             </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6" id="result"></div>
-            <div class="col-md-3"></div>
+        <div class="row mt-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="justify-content: center !important;display: flex;" id="result"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 </body>
@@ -49,7 +50,7 @@
             .then(res => res.json())
             .then(data => {
                 countrydetails = data[0];
-                result_data = `<div class="col-md-4"><div class="card" style="width: 18rem;">
+                result_data = `<div class="card">
     <img src="${countrydetails.flag}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${countrydetails.name}</h5>
@@ -58,7 +59,7 @@
       <p class="card-text">Currency symbol: ${countrydetails.currencies[0].symbol}</p>
       <p class="card-text">Currency name:${countrydetails.currencies[0].name}</p>
     </div>
-  </div></div>`;
+  </div>`;
                 result.innerHTML = result_data;
             })
     }
